@@ -1,6 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
+from reviews.models import Publisher
+
 
 def index(request):
     return HttpResponse('<h1>Hello World, 안녕하세요</h1>')
@@ -21,3 +23,8 @@ def hello_chn(request):
 
 def hello_template(request):
     return render(request, 'hello.html')
+
+
+def get_publisher_by_id(request, id):
+    pub = Publisher.objects.get(id=id)
+    return HttpResponse('출판사를 호출.. ' + str(pub))

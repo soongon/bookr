@@ -19,10 +19,11 @@ from django.urls import path
 import reviews.views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin', admin.site.urls),
     path('', reviews.views.index),
-    path('hello/', reviews.views.hello),
-    path('hello/eng/', reviews.views.hello_eng),
-    path('hello/chn/', reviews.views.hello_chn),
-    path('hello/tmp/', reviews.views.hello_template),
+    path('hello', reviews.views.hello),
+    path('hello/eng', reviews.views.hello_eng),
+    path('hello/chn', reviews.views.hello_chn),
+    path('hello/tmp', reviews.views.hello_template),
+    path('publisher/<int:id>', reviews.views.get_publisher_by_id),
 ]
