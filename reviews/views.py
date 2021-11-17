@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 
 from reviews.models import Publisher
@@ -27,7 +27,13 @@ def hello_template(request):
 
 def get_publisher_by_id(request, id):
     pub = Publisher.objects.get(id=id)
-    name = pub.name
     return render(request, 'publisher-detail.html', {
-        'name': name,
+        'name': pub.name,
+        'website': pub.website,
+        'email': pub.email,
     })
+
+
+def get_all_publisher(request):
+    result = Publisher.objects.all().values()
+    return render(request, 'publisher-list.html', {'publisher_list': result})
