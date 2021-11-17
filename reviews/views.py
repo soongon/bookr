@@ -27,4 +27,7 @@ def hello_template(request):
 
 def get_publisher_by_id(request, id):
     pub = Publisher.objects.get(id=id)
-    return HttpResponse('출판사를 호출.. ' + str(pub))
+    name = pub.name
+    return render(request, 'publisher-detail.html', {
+        'name': name,
+    })
