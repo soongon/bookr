@@ -43,4 +43,4 @@ def get_all_publisher(request):
 
 class TestView(View):
     def get(self, request):
-        return HttpResponse('Hello from CBV')
+        return HttpResponse('Hello from CBV', content_type='text/html')

@@ -1,8 +1,11 @@
 from django.urls import path
 
 import reviews.views
+import reviews.api_views
 
 urlpatterns = [
+    path('api/hello/', reviews.api_views.hello_api),
+
     path('', reviews.views.index),
     path('hello/', reviews.views.hello),
     path('hello/eng', reviews.views.hello_eng),
