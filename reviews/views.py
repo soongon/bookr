@@ -1,5 +1,6 @@
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
+from django.views import View
 
 from reviews.models import Publisher
 
@@ -34,6 +35,12 @@ def get_publisher_by_id(request, id):
     })
 
 
+# FBV <-->  CBV
 def get_all_publisher(request):
     result = Publisher.objects.all().values()
     return render(request, 'publisher-list.html', {'publisher_list': result})
+
+
+class TestView(View):
+    def get(self, request):
+        return HttpResponse('Hello from CBV')
