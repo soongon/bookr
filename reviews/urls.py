@@ -1,17 +1,16 @@
 from django.urls import path
 
-import reviews.views
-import reviews.api_views
+from . import views, api_views
 
 urlpatterns = [
-    path('api/hello/', reviews.api_views.hello_api),
+    path('api/hello/', api_views.hello_api),
 
-    path('', reviews.views.index),
-    path('hello/', reviews.views.hello),
-    path('hello/eng', reviews.views.hello_eng),
-    path('hello/chn', reviews.views.hello_chn),
-    path('hello/tmp', reviews.views.hello_template),
-    path('publisher/<int:id>', reviews.views.get_publisher_by_id),
-    path('publisher/', reviews.views.get_all_publisher),
-    path('cbv/', reviews.views.TestView.as_view()),
+    path('', views.index),
+    path('hello/', views.hello),
+    path('hello/eng', views.hello_eng),
+    path('hello/chn', views.hello_chn),
+    path('hello/tmp', views.hello_template),
+    path('publisher/<int:id>', views.get_publisher_by_id),
+    path('publisher/', views.get_all_publisher),
+    path('cbv/', views.TestView.as_view()),
 ]
