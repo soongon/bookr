@@ -1,9 +1,15 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 
 from . import views, api_views
 
+router = DefaultRouter()
+router.register('books', api_views.BookViewSet)
+# todo router.register('books', api_views.BookViewSet)
+
 urlpatterns = [
-    path('api/hello/', api_views.hello_api),
+    # path('api/hello/', api_views.hello_api),
+    path('api/', include(router.urls)),
 
     path('', views.index),
     path('hello/', views.hello),
